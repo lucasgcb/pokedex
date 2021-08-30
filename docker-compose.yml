@@ -1,0 +1,16 @@
+version: '3.0'
+services:
+    front-pokedex: 
+     build: 
+      context: ./
+      dockerfile: Dockerfile-dev
+     container_name: front-pokedex
+     ports:
+      - "80:80"
+     volumes:
+      - .:/home/node/app/
+     environment:
+      - DEVELOPMENT_MODE=1
+      - PRODUCTION_PORT=80
+      - HOST_DEVELOPMENT_ADDRESS=0.0.0.0
+      - HOST_PRODUCTION_ADDRESS=0.0.0.0
