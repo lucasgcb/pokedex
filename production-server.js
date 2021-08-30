@@ -7,7 +7,7 @@ app.use(express.static(DIST_DIR))
 app.get('*', (req, res) => {
   res.sendFile(HTML_FILE)
 })
-const PRODUCTION_PORT = process.env.PRODUCTION_PORT || 8080
-app.listen(PRODUCTION_PORT, () => {
-  console.log(`Production app listening to ${PRODUCTION_PORT}....`)
+const PORT = process.env.PORT || 80
+app.listen(PORT, () => {
+  console.log(`Production app listening to ${PORT}....`)
 })

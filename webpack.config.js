@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/index.tsx',
   mode: 'development',
   devServer: {
-    port: process.env.PRODUCTION_PORT,
+    port: process.env.PORT,
   },
   output: {
     path: path.join(__dirname, 'dist'),
