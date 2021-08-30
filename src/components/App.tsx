@@ -2,6 +2,7 @@
  * App
  * 
  * Parent component of the application.
+ * Immediately dispatches an API call for the Pokemon list.
  */
  import React, { FunctionComponent,Dispatch, useEffect } from 'react'
  import '../static/styles/App.css'

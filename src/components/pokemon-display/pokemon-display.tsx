@@ -1,4 +1,10 @@
-import { MenuItem, Select } from "@material-ui/core";
+/**
+ * pokemon-display.tsx
+ * 
+ * Mostly visual portion of the Pokedex.
+ * Displays the selected Pokemon's sprite.
+ * Read application state and plot a Radar chart with the selected pokemon's stats.
+ */
 import React, {useEffect} from "react";
 import { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
@@ -10,6 +16,10 @@ const PokemonDisplay: FunctionComponent = () => {
 
     const pokemon = useSelector((state:ApplicationState)=> state.pokemonSelected)
 
+    /**
+     * Plot the Radar chart with the selected Pokemon,
+     * after the API has successfully fetched.
+     */
     useEffect(()=>{
         if(pokemon.isFetched)
         {
@@ -17,6 +27,13 @@ const PokemonDisplay: FunctionComponent = () => {
             setCurrentImage(pokemon.picture)
         }
     },[pokemon.isFetched])
+
+    /**
+     * Construct the echarts plot with the 
+     * currently selected Pokemon's attributes.
+     * @param id html id
+     * @returns Echarts object
+     */
 
     const buildStatRadarPlot = (id:string):echarts.ECharts =>{
         const chartDom = document.getElementById(id)
@@ -98,10 +115,21 @@ const PokemonDisplay: FunctionComponent = () => {
 
 export default PokemonDisplay
 
+/**
+ * Return a class style for the little red balls 
+ * depending on the API fetch state.
+ * @param pokemon 
+ * @returns string with relevant class names.
+ */
 function getAPIFetchState(pokemon: PokemonSelectedState): string {
     return pokemon.isFetched ? "pretty-red-ball red-ball-on" : "pretty-red-ball red-ball-off";
 }
 
+/**
+ * Returns the sum of all the base stats of the Pokemon.
+ * @param pokemon 
+ * @returns number sum of the stats
+ */
 function sumAllBaseStats(pokemon: PokemonSelectedState): React.ReactNode {
     return Object.values(pokemon.stats).reduce((total,current) => {
         return current + total
