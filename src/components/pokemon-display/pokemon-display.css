@@ -1,5 +1,26 @@
-#pokemon-stat-plot 
+@media only screen and (min-width: 600px) {
+    #pokemon-stat-plot  {
+      height: 600px;
+      width: 600px;
+    }
+  }
+
+@media only screen and (max-width: 500px) {
+    #pokemon-stat-plot  {
+    height: 220px;
+    width: 360px;
+    }
+}
+
+#pokemon-stat-plot-parent
 {
-    height:300px;
-    width:300px;
+    display:flex;
+    justify-content: space-around;
+
+}
+#pokemon-display-parent
+{
+    font-family: 'VT323', monospace;
+    text-transform: capitalize;
+    text-align: center
 }

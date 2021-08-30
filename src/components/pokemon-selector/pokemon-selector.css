@@ -1,4 +1,6 @@
-#pokemon-selector-parent{
-
-  text-transform: capitalize;
+#pokemon-selector-parent
+{
+    font-family: 'VT323', monospace;
+    text-transform: capitalize;
+    text-align: center
 }
