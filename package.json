@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "development": "webpack serve --config webpack.config.js --hot --host $HOST_DEVELOPMENT_ADDRESS",
+    "build": "webpack --config webpack.config.js",
+    "start": "node ./production-server.js",
     "test": "test"
   },
   "repository": {
