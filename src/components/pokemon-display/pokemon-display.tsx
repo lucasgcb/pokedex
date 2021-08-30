@@ -24,8 +24,8 @@ const PokemonDisplay: FunctionComponent = () => {
           throw ('Radar Chart div disappeared')
         const myChart = echarts.init(chartDom)
         const option = {
-            legend: {
-                data: ["Base Attributes", ]
+            tooltip: {
+                
             },
             radar: {
                 indicator: [
@@ -38,7 +38,7 @@ const PokemonDisplay: FunctionComponent = () => {
                 ]
             },
             series: [{
-                name: `${pokemon.name} stats`,
+                name: `Base Attributes`,
                 type: 'radar',
                 data: [
                     {
@@ -75,19 +75,33 @@ const PokemonDisplay: FunctionComponent = () => {
         <div id="pokemon-profile">
             <img src={currentImage}></img>
         </div>
+
         <div id="pokemon-stat-title">
-         {`${pokemon.name} base stats`}
+            <div className={getAPIFetchState(pokemon)}></div>
+            <div className="pokemon-stat-title-text"> {`${pokemon.name} base stats`}</div>
+            <div className={getAPIFetchState(pokemon)}></div>
         </div>
         <div id="pokemon-stat-plot-parent">
+
             <div id="pokemon-stat-plot"></div>
         </div>
-        <div id="pokemon-curiosity">
-            Total Base Stats: {sumAllBaseStats(pokemon)} pts.
+        <div id="pokemon-curiosity-holder">
+            <div id="pokemon-curiosity-text">
+                Total Base Stats: {sumAllBaseStats(pokemon)} pts.
+            </div>
+            <div id="pretty-radio-holder">
+            <div id="pretty-radio-speaker"></div>
+            </div>
         </div>
     </div>
 }
 
 export default PokemonDisplay
+
+function getAPIFetchState(pokemon: PokemonSelectedState): string {
+    return pokemon.isFetched ? "pretty-red-ball red-ball-on" : "pretty-red-ball red-ball-off";
+}
+
 function sumAllBaseStats(pokemon: PokemonSelectedState): React.ReactNode {
     return Object.values(pokemon.stats).reduce((total,current) => {
         return current + total

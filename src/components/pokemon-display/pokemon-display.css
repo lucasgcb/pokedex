@@ -1,26 +1,150 @@
 @media only screen and (min-width: 600px) {
-    #pokemon-stat-plot  {
+    #pokemon-stat-plot-parent  {
       height: 600px;
-      width: 600px;
+      width: 100%;
     }
   }
 
-@media only screen and (max-width: 500px) {
+
+
+@media only screen and (min-width: 600px) {
+    #pokemon-stat-plot  {
+      width: 600px;
+      margin: 20px;
+
+    border: 0px;
+    border-right: 8px;
+    border-right-width: 8px;
+    border-top-width: 8px;
+    border-left: 8px;
+    border-left-width: 8px;
+    border-style: solid;
+    border-color: gray;
+
+    }
+  }
+
+@media only screen and (max-width: 600px) {
     #pokemon-stat-plot  {
     height: 220px;
     width: 360px;
     }
 }
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-10px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+@keyframes ballOn {
+    0%{
+      background: #111;
+    }
+    100% {
+      background: red;
+    }
+  }
+
+@keyframes ballOff {
+0%{
+    background: red;
+}
+100% {
+    background: #111;
+}
+}
+.pokemon-stat-title-text{
+    width:200px;
+}
+.red-ball-on {
+	animation: ballOn 2s ease-in-out forwards;
+}
+
+.red-ball-off {
+	animation: ballOff 0.4s ease-in-out forwards;
+}
+
+#pokemon-profile img {
+	animation: float 2s ease-in-out infinite;
+}
+
+.pretty-red-ball {
+
+    border-radius: 40px 40px 40px 40px;
+    background-color: red;
+    height: 24px;
+    width: 24px;
+
+    border: 0px;
+    border-right: 4px;
+    border-right-width: 4px;
+    border-top-width: 4px;
+    border-left: 4px;
+    border-left-width: 4px;
+    border-style: solid;
+    border-color: darkgray;
+}
+#pokemon-stat-title
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 10px;
+    background-color: white;
+}
+
+#pretty-radio-speaker
+{
+    margin: 5px 5px 10px 5px;
+    height: 50px;
+    width: 200px;
+    background: repeating-linear-gradient( 90deg, #000, #fff 4px);
+}
 
 #pokemon-stat-plot-parent
 {
+    
     display:flex;
     justify-content: space-around;
+    background-color: white;
+    border: 0px;
+    border-bottom: 4px;
+    border-bottom-width: 4px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 0px 0 0 20px ;
+}
 
+#pokemon-stat-plot{
+    background-color: black;
+}
+
+#pokemon-curiosity-holder{
+    height: 100px;
+    background-color: white;
+    border: 0px;
+    border-bottom: 4px;
+    border-bottom-width: 4px;
+    border-style: solid;
+    border-color: black;
+    margin-top: 20px;
+    display:flex;
+    flex-direction: column;
+}
+#pretty-radio-holder{
+    display: flex;
+    justify-content: space-around;
 }
 #pokemon-display-parent
 {
     font-family: 'VT323', monospace;
     text-transform: capitalize;
-    text-align: center
+    text-align: center;
+    font-size: 20px;
 }

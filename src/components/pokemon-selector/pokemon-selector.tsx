@@ -1,4 +1,4 @@
-import { MenuItem, Select } from "@material-ui/core";
+import { makeStyles, MenuItem, Select } from "@material-ui/core";
 import React, {useEffect} from "react";
 import { FunctionComponent } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,11 +6,19 @@ import { getPokemon } from "../../redux/actions/pokemon-select-actions";
 
 import './pokemon-selector.css'
 const PokemonSelector: FunctionComponent = () => {
+    const useStyles = makeStyles({
+      root: {
+        fontFamily: "VT323, monospace",
+        marginTop: '10px'
+      },
+    });
 
+    const classes = useStyles();
     const [selectedPokemon, setSelectedPokemon] = React.useState('');
     const [availablePokemon, setAvailablePokemon] = React.useState<PokemonListItem[]>([]);
 
     const pokemonList = useSelector((state:ApplicationState)=> state.pokemonList)
+    const pokemonSelected = useSelector((state:ApplicationState)=> state.pokemonSelected)
     const handleChange = (event: React.ChangeEvent<{ value: string }>) => {
       setSelectedPokemon(event.target.value);
     };
@@ -35,19 +43,34 @@ const PokemonSelector: FunctionComponent = () => {
     }, [selectedPokemon])
 
     return <div id="pokemon-selector-parent">
-         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={selectedPokemon}
-          onChange={handleChange}
-          name={selectedPokemon}
-        >
-          {availablePokemon.map((item)=>{
-            const number = getPokemonNumber(item);
-            return <MenuItem key={item.name + "select"} value={item.url}>{`${item.name} - (${number})`}</MenuItem>
-            })}
+      <div id="pretty-detail-header">
+        <div id="pretty-top-padding">
+          <div id="pretty-light" className={pokemonSelected.isFetched? "pretty-light-on" : "pretty-light-off"}>
+          </div>
+          <div id="pokemon-select-holder">
+          <Select
+            className={classes.root}
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={selectedPokemon}
+            onChange={handleChange}
+            name={selectedPokemon}
+          >
+            {availablePokemon.map((item)=>{
+              const number = getPokemonNumber(item);
+              return <MenuItem 
+              className={classes.root}
+              key={item.name + "select"} 
+              value={item.url}>
+                {`${item.name} - (${number})`}
+              </MenuItem>
+              })}
+          
+          </Select>
+          </div>
+        </div>
         
-        </Select>
+      </div>
     </div>
 }
 
