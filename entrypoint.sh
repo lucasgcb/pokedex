@@ -11,16 +11,10 @@ else
 	npm install
 fi
 
-if [ $TEST -eq 1 ];
-then
-	npm test 
-	exit $?
-fi
-
 if [ $DEVELOPMENT_MODE -eq 1 ];
 then
 	npm run development
 else
-	npm run build
-	npm run deploy
+	npm run postinstall
+	npm run start
 fi
