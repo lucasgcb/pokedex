@@ -8,6 +8,7 @@ const defaultPokemon:PokemonSelectedState = {
     stats: {
         hp: 0,
         attack: 0,
+        defense: 0,
         specialAttack: 0,
         specialDefense: 0,
         speed: 0
@@ -36,6 +37,8 @@ export function setNewPokemon(pokemon:PokemonInterface) {
             return retrievedStats.hp = statItem.base_stat
         if(statItem.stat.name=="attack")
             return retrievedStats.attack = statItem.base_stat
+        if(statItem.stat.name=="defense")
+            return retrievedStats.defense = statItem.base_stat
         if(statItem.stat.name=="special-attack")
             return retrievedStats.specialAttack = statItem.base_stat
         if(statItem.stat.name=="special-defense")

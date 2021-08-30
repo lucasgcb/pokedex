@@ -1,4 +1,3 @@
-import { GET_POKEMON_LIST, SET_POKEMON_LIST } from "../actions/pokemon-list-actions"
 import { GET_POKEMON_SELECTED, SET_POKEMON_SELECTED } from "../actions/pokemon-select-actions"
 
 const initialState:PokemonSelectedState = {
@@ -8,6 +7,7 @@ const initialState:PokemonSelectedState = {
     stats: {
       hp: 0,
       attack: 0,
+      defense: 0,
       specialAttack: 0,
       specialDefense: 0,
       speed: 0
